@@ -9,7 +9,7 @@ class UDPClientFromFile {
         DataInputStream dis = null;
         String sentence = "";
         try {
-            in = new FileInputStream("text.txt");
+            in = new FileInputStream("dontgit.txt");
             DatagramSocket clientSocket = new DatagramSocket();
             InetAddress IPAddress
                     = InetAddress.getByName("localhost");
