@@ -1,0 +1,2 @@
+1 - O tamanho máximo de envio é 65507 bytes de informação (65536 bytes ou 2**16 − 29 bytes de cabeçalho UDP).
+2 - O programa da um IOException dizendo que a mensagem é longa demais.
