@@ -3,7 +3,7 @@ import java.net.*;
 /**
  * @author lycog
  */
-public class MSGMulticastSender {
+public class MSGMulticastSender extends Thread{
   public static void main(String[] args) {
     DatagramSocket socket = null;
     DatagramPacket outPacket = null;

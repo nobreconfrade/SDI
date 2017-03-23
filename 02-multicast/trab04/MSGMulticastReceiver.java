@@ -4,7 +4,7 @@ import java.net.*;
  *
  * @author lycog
  */
-public class MSGMulticastReceiver {
+public class MSGMulticastReceiver extends Thread{
   public static void main(String[] args) {
     MulticastSocket socket = null;
     DatagramPacket inPacket = null;
