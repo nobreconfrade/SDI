@@ -1,4 +1,4 @@
-package hello;
+package trab08chat;
 
 import javax.jws.WebMethod;
 import javax.jws.WebService;
