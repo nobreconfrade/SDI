@@ -1,0 +1,8 @@
+1) Compilar classes:
+  javac calc/*.java
+2) lancar servidor WS:
+  java calc.CalculadoraServerPublisher
+3) Verificar disponibilidade do servico:
+  navegador http://127.0.0.1:9876/calc?wsdl
+4) executar cliente:
+  java calc.CalculadoraClient

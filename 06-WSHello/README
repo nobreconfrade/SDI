@@ -1,0 +1,8 @@
+1) Compilar classes:
+  javac hello/*.java
+2) lancar servidor WS:
+  java hello.HelloWorldServerPublisher
+3) Verificar disponibilidade do servico:
+  navegador http://127.0.0.1:9876/hw?wsdl
+4) executar cliente:
+  java hello.HelloWorldClient 
