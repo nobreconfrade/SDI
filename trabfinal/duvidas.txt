@@ -1,0 +1,3 @@
+- Vai haver um servidor entre as maquinas com os 'chunks' e os cliente?
+- Cliente e servidor são a mesma coisa?
+- Que tipo arquivo é o .sdi? Pode ser texto?
