@@ -1,4 +1,4 @@
-- Vai haver um servidor entre as maquinas com os 'chunks' e os cliente?
-- Cliente e servidor são a mesma coisa?
-- Usar RMI?
-- Que tipo arquivo é o .sdi? Pode ser texto?
+- Vai haver um servidor entre as maquinas com os 'chunks' e os cliente? Não, é tido P2P
+- Cliente e servidor são a mesma coisa? Sim, uma hora pode ser cliente, outra hora é seervidor
+- Usar RMI? Talvez, provavelmente não
+- Que tipo arquivo é o .sdi? Pode ser texto? É uma imagem
