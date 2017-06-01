@@ -11,13 +11,13 @@ class test{
 		byte[] buffer = new byte[65507];
 		int count = 0;
 		long size = in.getChannel().size();
-    int i = 0;
-		while ((count += in.read(buffer, 0, 65507)) < size){
+    	int i = 0;
+		do{
 			FileOutputStream out = new FileOutputStream("output"+i+".jpg");
         	out.write(buffer);
         	out.close();
         	i++;
-        }
+        }while((count += in.read(buffer, 0, 65507)) < size);
         in.close();
 	}
 }
