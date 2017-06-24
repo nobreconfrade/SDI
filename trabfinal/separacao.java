@@ -4,14 +4,14 @@ import java.util.ArrayList;
 class Dados{
     int     hash_chunk;
 
-    ArrayList <String>  vetor_bd_chunk;
+    ArrayList <String>  vetor_bd_chunk = new ArrayList <Dados>();
 }
 class Metadado{
     String  nome;
     long    size;
     int     n_chunks;
 
-    ArrayList <Dados>   vetor_dados;
+    ArrayList <Dados>   vetor_dados = new ArrayList <Dados>();
 
     public void save() throws Exception{
         FileOutputStream file = new FileOutputStream(this.nome+".sdi");
