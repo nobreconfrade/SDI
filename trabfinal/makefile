@@ -1,2 +1,2 @@
 clean:
-	rm *.class *.chunk
+	rm *.class *.chunk *.jpg
