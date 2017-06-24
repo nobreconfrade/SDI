@@ -1,5 +1,17 @@
 import java.io.*;
+import java.util.ArrayList;
 
+class Dados{
+    String  hash_chunk;
+
+    ArrayList <String>  vetor_bd_chunk;
+}
+class Metadado{
+    String  nome;
+    long    size;
+    
+    ArrayList <Dados>   vetor_dados;
+}
 class separacao{
     public static void main(String args[]) throws Exception {
         FileInputStream in = null;
