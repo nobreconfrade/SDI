@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 class Dados{
-    String  hash_chunk;
+    int     hash_chunk;
 
     ArrayList <String>  vetor_bd_chunk;
 }
@@ -37,24 +37,27 @@ class separacao{
 		int count = 0;
 		long size = in.getChannel().size();
     	int i = 0, len = 0;
+        Metadado meta   = new Metadado();
         while(true){
-        	count += in.read(buffer, 0, len = (int)(count+65507 < size ? 65507 : size-count));
-        	if(len == 0)
-        		break;
+            count += in.read(buffer, 0, len = (int)(count+65507 < size ? 65507 : size-count));
+            if(len == 0)
+                break;
             String hashstring = new String(buffer, "UTF-8");
             int hashvalue = hashstring.hashCode();
             if (hashvalue < 0){
               hashvalue *= -1;
             }
+            Dados aux = new Dados();
+            aux.hash_chunk = hashvalue;
+            meta.vetor_dados.add(aux);
             // System.out.println(hashvalue);
-			FileOutputStream out = new FileOutputStream("output"+i+".jpg");
-        	out.write(buffer, 0, len);
-        	out.close();
-        	i++;
+            FileOutputStream out = new FileOutputStream(String.valueOf(hashvalue));
+            out.write(buffer, 0, len);
+            out.close();
+            i++;
             if(len < 65507)
                 break;
         }
-        Metadado meta   = new Metadado();
         meta.nome       = nome;
         meta.size       = size;
         meta.n_chunks   = i;
