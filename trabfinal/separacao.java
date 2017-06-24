@@ -41,6 +41,12 @@ class separacao{
         	count += in.read(buffer, 0, len = (int)(count+65507 < size ? 65507 : size-count));
         	if(len == 0)
         		break;
+            String hashstring = new String(buffer, "UTF-8");
+            int hashvalue = hashstring.hashCode();
+            if (hashvalue < 0){
+              hashvalue *= -1;
+            }
+            // System.out.println(hashvalue);
 			FileOutputStream out = new FileOutputStream("output"+i+".jpg");
         	out.write(buffer, 0, len);
         	out.close();
