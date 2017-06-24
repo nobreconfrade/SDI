@@ -1,6 +1,6 @@
 import java.io.*;
 
-class test{
+class separacao{
     public static void main(String args[]) throws Exception {
         FileInputStream in = null;
 		in = new FileInputStream("tests/test1.jpg");
