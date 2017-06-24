@@ -2,7 +2,7 @@
 import java.io.*;
 import java.net.*;
 
-class UDPServerFromFile {
+class UDPServer {
 
     public static void main(String args[]) throws Exception {
         DatagramSocket serverSocket = new DatagramSocket(9876);
@@ -28,6 +28,7 @@ class UDPServerFromFile {
                             sendData.length,
                             IPAddress, port);
             serverSocket.send(sendPacket);
+            System.out.println(capitalizedSentence);
         }
     }
 }

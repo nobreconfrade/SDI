@@ -1,7 +1,7 @@
 import java.io.*;
 import java.net.*;
 
-class UDPClientFromFile {
+class UDPClient {
 
     public static void main(String args[]) throws Exception {
         FileInputStream in = null;
@@ -9,10 +9,10 @@ class UDPClientFromFile {
         DataInputStream dis = null;
         String sentence = "";
         try {
-            in = new FileInputStream("dontgit.txt");
+            in = new FileInputStream("688790878.chunk");
             DatagramSocket clientSocket = new DatagramSocket();
             InetAddress IPAddress
-                    = InetAddress.getByName("localhost");
+                    = InetAddress.getByName("192.168.0.9");
             byte[] sendData = new byte[65507];
             byte[] receiveData = new byte[65507];
             int count;
