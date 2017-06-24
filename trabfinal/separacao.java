@@ -4,7 +4,7 @@ import java.util.ArrayList;
 class Dados{
     int     hash_chunk;
 
-    ArrayList <String>  vetor_bd_chunk = new ArrayList <Dados>();
+    ArrayList <String>  vetor_bd_chunk = new ArrayList <String>();
 }
 class Metadado{
     String  nome;
@@ -51,7 +51,7 @@ class separacao{
             aux.hash_chunk = hashvalue;
             meta.vetor_dados.add(aux);
             // System.out.println(hashvalue);
-            FileOutputStream out = new FileOutputStream(String.valueOf(hashvalue));
+            FileOutputStream out = new FileOutputStream(String.valueOf(hashvalue) + ".chunk");
             out.write(buffer, 0, len);
             out.close();
             i++;
