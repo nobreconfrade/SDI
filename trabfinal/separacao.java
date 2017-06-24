@@ -1,9 +1,12 @@
 import java.io.*;
 
-class separacao{
+class test{
     public static void main(String args[]) throws Exception {
         FileInputStream in = null;
-		in = new FileInputStream("tests/test1.jpg");
+        String path[] = args[0].split("/");
+        String nome = path[path.length - 1];
+        // System.out.println(nome);
+		in = new FileInputStream(args[0]);
 		byte[] buffer = new byte[65507];
 		int count = 0;
 		long size = in.getChannel().size();
@@ -15,10 +18,15 @@ class separacao{
 			FileOutputStream out = new FileOutputStream("output"+i+".jpg");
         	out.write(buffer, 0, len);
         	out.close();
-        	if(len < 65507)
-        		break;
         	i++;
+            if(len < 65507)
+                break;
         }
+        FileOutputStream meta = new FileOutputStream(nome+".sdi");
+        PrintStream printStream = new PrintStream(meta);
+        printStream.println(nome);
+        meta.write(i);
+        meta.close();
         in.close();
 	}
 }
