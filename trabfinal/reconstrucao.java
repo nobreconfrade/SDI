@@ -24,7 +24,7 @@ class reconstrucao{
     	FileOutputStream out = new FileOutputStream("reconstruido.jpg");
         FileInputStream chunk;
     	for(Dados it: meta.vetor_dados){
-            chunk = new FileInputStream(String.valueOf(it.hash_chunk)+".chunk");
+            chunk = new FileInputStream(String.valueOf("chunks/"+it.hash_chunk)+".chunk");
         	long size = chunk.getChannel().size();
 			byte[] buffer = new byte[65507];
 			chunk.read(buffer, 0, (int)size);
