@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 class reconstrucao{
     public static void main(String args[]) throws Exception {
-    	FileInputStream file = null;
+        FileInputStream file = null;
         Metadado meta = new Metadado();
 
         if(args.length == 0){
@@ -21,16 +21,16 @@ class reconstrucao{
         meta.n_chunks   = in.readInt();
         meta.vetor_dados = (ArrayList <Dados>) in.readObject();
         //fimleitura
-    	FileOutputStream out = new FileOutputStream("reconstruido.jpg");
+        FileOutputStream out = new FileOutputStream("reconstruido.jpg");
         FileInputStream chunk;
-    	for(Dados it: meta.vetor_dados){
+        for(Dados it: meta.vetor_dados){
             chunk = new FileInputStream(String.valueOf("chunks/"+it.hash_chunk)+".chunk");
-        	long size = chunk.getChannel().size();
-			byte[] buffer = new byte[65507];
-			chunk.read(buffer, 0, (int)size);
-			out.write(buffer, 0, (int)size);
-        	chunk.close();
-    	}
-    	out.close();
+            long size = chunk.getChannel().size();
+            byte[] buffer = new byte[65507];
+            chunk.read(buffer, 0, (int)size);
+            out.write(buffer, 0, (int)size);
+            chunk.close();
+        }
+        out.close();
     }
 }

@@ -7,5 +7,8 @@ rec1:
 sep1:
 	java separacao tests/test1.jpg
 
+main:
+	javac main.java
+
 clean:
 	rm *.class chunks/* *.jpg *.jpg.sdi 
