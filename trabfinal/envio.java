@@ -1,24 +1,41 @@
 import java.io.*;
 import java.net.*;
+import java.util.ArrayList;
 
-class UDPClient {
+class envio {
 
     public static void main(String args[]) throws Exception {
-        FileInputStream in = null;
+        FileInputStream listaips = null;
         BufferedInputStream bis = null;
         DataInputStream dis = null;
         String sentence = "";
+        Metadado meta = new Metadado();
+        FileInputStream file = null;
+        file = new FileInputStream(args[0]);
         try {
-            in = new FileInputStream("688790878.chunk");
+
+            byte[] bytes = new byte[(int)file.getChannel().size()];
+            file.read(bytes);
+            ByteArrayInputStream bos = new ByteArrayInputStream(bytes);
+            ObjectInput in   = new ObjectInputStream(bos);
+            meta.nome        = in.readUTF();
+            meta.size        = in.readLong();
+            meta.n_chunks    = in.readInt();
+            meta.vetor_dados = (ArrayList <Dados>) in.readObject();
+
+            listaips = new FileInputStream("listaips.txt");
+            int count;
+            while ((count = listaips.read()) != -1){
+              sentence += Character.toString((char)count);
+            }
+            String[] lines = sentence.split(System.getProperty("line.separator"));
+            for(int i=0;i<lines.length;i++)
+              System.out.println(lines[i]);
             DatagramSocket clientSocket = new DatagramSocket();
             InetAddress IPAddress
                     = InetAddress.getByName("192.168.0.9");
             byte[] sendData = new byte[65507];
             byte[] receiveData = new byte[65507];
-            int count;
-            while ((count = in.read()) != -1){
-              sentence += Character.toString((char)count);
-            }
             // NOTE: Next lines is for test purposes
             System.out.print(sentence);
             System.out.println("---------------------------------------------------------");

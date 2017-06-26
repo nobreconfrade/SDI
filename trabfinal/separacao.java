@@ -76,7 +76,7 @@ class separacao{
             aux.vetor_bd_chunk.add("teste");
             meta.vetor_dados.add(aux);
             // System.out.println(hashvalue);
-            FileOutputStream out = new FileOutputStream(String.valueOf(hashvalue) + ".chunk");
+            FileOutputStream out = new FileOutputStream("chunks/" + String.valueOf(hashvalue) + ".chunk");
             out.write(buffer, 0, len);
             out.close();
             i++;
@@ -87,7 +87,7 @@ class separacao{
         meta.size       = size;
         meta.n_chunks   = i;
         meta.save();
-        // meta.debug();
+        meta.debug();
         in.close();
 	}
 }

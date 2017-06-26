@@ -8,4 +8,4 @@ sep1:
 	java separacao tests/test1.jpg
 
 clean:
-	rm *.class *.chunk *.jpg *.jpg.sdi
+	rm *.class chunks/* *.jpg *.jpg.sdi 
