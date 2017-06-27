@@ -31,8 +31,7 @@ class cliente {
             String[] lines = sentence.split(System.getProperty("line.separator"));
 
             for(int i=0;i<meta.n_chunks;i++){
-                // Socket server = new Socket (lines[i%lines.length],serverPort);
-                Socket server = new Socket ("localhost",serverPort);
+                Socket server = new Socket (lines[i%lines.length],serverPort);
                 DataOutputStream paraservidor = new DataOutputStream(server.getOutputStream());
                 paraservidor.writeBytes("send");
                 paraservidor.flush();
