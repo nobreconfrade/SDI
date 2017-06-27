@@ -13,7 +13,7 @@ private final static int serverPort = 3248;
           BufferedReader docliente = new BufferedReader( new InputStreamReader(cliente.getInputStream()));
           String msg = docliente.readLine();
           if(msg.equals("send")){
-            System.out.println("opa, vamo que vamo");
+              
           }else{
             System.out.println("quase la! "+msg);
 

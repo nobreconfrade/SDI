@@ -7,7 +7,6 @@ class cliente {
 
     public static void main(String args[]) throws Exception {
         FileInputStream listaips,file = null;
-        BufferedInputStream bis = null;
         DataInputStream dis = null;
         String sentence = "";
         Metadado meta = new Metadado();
@@ -36,7 +35,18 @@ class cliente {
                 paraservidor.writeBytes("send");
                 paraservidor.flush();
                 paraservidor.close();
+                BufferedOutputStream bufferservidor = new BufferedOutputStream(server.getOutputStream());
+                File meuchunk = new File("chunks/"+meta.vetor_dados.get(i).hash_chunk+".chunk");
+                byte[] mybytearray = new byte[(int) meuchunk.length()];
+                FileInputStream fis = new FileInputStream(meuchunk);
+                BufferedInputStream bis = new BufferedInputStream(fis);
+                bis.read(mybytearray, 0, mybytearray.length);
+                bufferservidor.write(mybytearray, 0, mybytearray.length);
+                bufferservidor.flush();
+                bufferservidor.close();
+                server.close();
             }
+            return;
       }catch (FileNotFoundException e) {
         e.printStackTrace();
       }catch (IOException e) {
