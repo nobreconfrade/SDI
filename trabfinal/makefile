@@ -14,4 +14,4 @@ cliser:
 	javac cliente.java servidor.java
 
 clean:
-	rm *.class chunks/* *.jpg *.jpg.sdi
+	rm *.class chunks/* chunkspassed/* *.jpg *.jpg.sdi
