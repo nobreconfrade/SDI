@@ -81,7 +81,7 @@ class main{
             }
             Dados aux = new Dados();
             aux.hash_chunk = hashvalue;
-            aux.vetor_bd_chunk.add("teste");
+            // aux.vetor_bd_chunk.add("teste");
             meta.vetor_dados.add(aux);
             // System.out.println(hashvalue);
             FileOutputStream out = new FileOutputStream("chunks/" + hashvalue + ".chunk");
