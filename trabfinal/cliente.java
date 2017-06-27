@@ -40,7 +40,7 @@ class cliente {
                 // Socket server = new Socket ("localhost",serverPort);
                 DataOutputStream paraservidor = new DataOutputStream(server.getOutputStream());
                 paraservidor.writeBytes("send_"+String.valueOf(meta.vetor_dados.get(enviados).hash_chunk));
-                System.out.println("send_"+meta.vetor_dados.get(enviados).hash_chunk);
+                // System.out.println("send_"+meta.vetor_dados.get(enviados).hash_chunk);
                 paraservidor.flush();
                 // paraservidor.close();
                 // server.close();
@@ -62,8 +62,15 @@ class cliente {
             }
             if(enviados != meta.n_chunks)
               System.out.println("Envio falhou");
-            else
+            else{
               System.out.println("Sucesso");
+              for(int i=0;i<meta.n_chunks;i++){
+                File filel = new File("chunks/"+meta.vetor_dados.get(i).hash_chunk+".chunk");
+                if (filel.delete()) {
+                  System.out.println(filel.getName() + " foi deletada!");
+                }
+              }
+            }
             // meta.debug();
             return;
       }catch (FileNotFoundException e) {
