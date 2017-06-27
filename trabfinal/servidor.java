@@ -17,9 +17,7 @@ private final static int serverPort = 3248;
           String mensage = docliente.readLine();
           String msg[] = mensage.split("_");
           if(msg[0].equals("send")){
-            System.out.println(msg[1]);
             msg[1] = msg[1].replaceAll("(\\d+).*", "$1");
-            System.out.println(msg[1]);
             // try {
               // cliente = servidor.accept();
               is = cliente.getInputStream();

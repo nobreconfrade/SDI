@@ -36,8 +36,8 @@ class cliente {
                   System.out.println("Conexão falhou");
                   continue;
                 }
-                // Socket server = new Socket (lines[i%lines.length],serverPort);
-                Socket server = new Socket ("localhost",serverPort);
+                Socket server = new Socket (lines[i%lines.length],serverPort);
+                // Socket server = new Socket ("localhost",serverPort);
                 DataOutputStream paraservidor = new DataOutputStream(server.getOutputStream());
                 paraservidor.writeBytes("send_"+String.valueOf(meta.vetor_dados.get(enviados).hash_chunk));
                 System.out.println("send_"+meta.vetor_dados.get(enviados).hash_chunk);
