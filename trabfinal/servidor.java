@@ -38,7 +38,7 @@ private final static int serverPort = 3248;
             bos.close();
             cliente.close();
           }else{
-            // System.out.println("quase la! "+msg[1]);
+            System.out.println("quase la! "+msg[1]);
             BufferedOutputStream buffercliente = new BufferedOutputStream(cliente.getOutputStream());
             File meuchunk = new File("chunkspassed/"+msg[1]+".chunk");
             byte[] mybytearray = new byte[(int) meuchunk.length()];
