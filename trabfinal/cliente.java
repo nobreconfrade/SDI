@@ -39,8 +39,8 @@ class cliente {
                 // Socket server = new Socket (lines[i%lines.length],serverPort);
                 Socket server = new Socket ("localhost",serverPort);
                 DataOutputStream paraservidor = new DataOutputStream(server.getOutputStream());
-                paraservidor.writeBytes("send_"+meta.vetor_dados.get(enviados).hash_chunk);
-                // System.out.println("send_"+meta.vetor_dados.get(enviados).hash_chunk);
+                paraservidor.writeBytes("send_"+String.valueOf(meta.vetor_dados.get(enviados).hash_chunk));
+                System.out.println("send_"+meta.vetor_dados.get(enviados).hash_chunk);
                 paraservidor.flush();
                 // paraservidor.close();
                 // server.close();
@@ -57,7 +57,7 @@ class cliente {
                 server.close();
                 meta.vetor_dados.get(enviados).vetor_bd_chunk.add(lines[i%lines.length]);
                 meta.save();
-                System.out.println(meta.vetor_dados.get(enviados).vetor_bd_chunk.get(0));
+                // System.out.println(meta.vetor_dados.get(enviados).vetor_bd_chunk.get(0));
                 enviados++;
             }
             if(enviados != meta.n_chunks)

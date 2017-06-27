@@ -17,6 +17,9 @@ private final static int serverPort = 3248;
           String mensage = docliente.readLine();
           String msg[] = mensage.split("_");
           if(msg[0].equals("send")){
+            System.out.println(msg[1]);
+            msg[1] = msg[1].replaceAll("\\D+", "");
+            System.out.println(msg[1]);
             // try {
               // cliente = servidor.accept();
               is = cliente.getInputStream();
@@ -24,12 +27,8 @@ private final static int serverPort = 3248;
             //   System.out.println("Algum problema na segunda fase de conexão.");
             // }
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            if(msg[1].equals("688790878"))
-              System.out.println("msg[1]: "+msg[1]);
-            else
-              System.out.println("deu ruim");
             FileOutputStream fos = new FileOutputStream("chunkspassed/"+msg[1]+".chunk");
-            // System.out.println(msg[1]);
+            // FileOutputStream fos = new FileOutputStream("chunkspassed/BABANA.chunk");
             BufferedOutputStream bos = new BufferedOutputStream(fos);
             bytesRead = is.read(aByte, 0, aByte.length);
             do {
