@@ -24,9 +24,12 @@ private final static int serverPort = 3248;
             //   System.out.println("Algum problema na segunda fase de conexão.");
             // }
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            System.out.println(msg[1]);
+            if(msg[1].equals("688790878"))
+              System.out.println("msg[1]: "+msg[1]);
+            else
+              System.out.println("deu ruim");
             FileOutputStream fos = new FileOutputStream("chunkspassed/"+msg[1]+".chunk");
-            System.out.println(msg[1]);
+            // System.out.println(msg[1]);
             BufferedOutputStream bos = new BufferedOutputStream(fos);
             bytesRead = is.read(aByte, 0, aByte.length);
             do {
