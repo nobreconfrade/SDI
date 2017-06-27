@@ -29,7 +29,8 @@ class cliente {
             }
             String[] lines = sentence.split(System.getProperty("line.separator"));
             int enviados = 0;
-            for(int i=0; i<lines.length && enviados<meta.n_chunks;i++){
+            // for(int i=0; i<lines.length && enviados<meta.n_chunks;i++){
+            for(int i=0;enviados<meta.n_chunks;i++){
                 InetAddress teste = InetAddress.getByName(lines[i%lines.length]);
                 if(!teste.isReachable(1000)){
                   System.out.println("Conexão falhou");
@@ -39,7 +40,7 @@ class cliente {
                 Socket server = new Socket ("localhost",serverPort);
                 DataOutputStream paraservidor = new DataOutputStream(server.getOutputStream());
                 paraservidor.writeBytes("send_"+meta.vetor_dados.get(enviados).hash_chunk);
-                System.out.println("send_"+meta.vetor_dados.get(enviados).hash_chunk);
+                // System.out.println("send_"+meta.vetor_dados.get(enviados).hash_chunk);
                 paraservidor.flush();
                 // paraservidor.close();
                 // server.close();
@@ -55,6 +56,7 @@ class cliente {
                 bufferservidor.close();
                 server.close();
                 meta.vetor_dados.get(enviados).vetor_bd_chunk.add(lines[i%lines.length]);
+                meta.save();
                 System.out.println(meta.vetor_dados.get(enviados).vetor_bd_chunk.get(0));
                 enviados++;
             }
