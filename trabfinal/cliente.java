@@ -35,6 +35,8 @@ class cliente {
                 paraservidor.writeBytes("send");
                 paraservidor.flush();
                 paraservidor.close();
+                server.close();
+                server = new Socket (lines[i%lines.length],serverPort);
                 BufferedOutputStream bufferservidor = new BufferedOutputStream(server.getOutputStream());
                 File meuchunk = new File("chunks/"+meta.vetor_dados.get(i).hash_chunk+".chunk");
                 byte[] mybytearray = new byte[(int) meuchunk.length()];
