@@ -45,8 +45,12 @@ class Metadado implements Serializable{
         ArrayList <Dados> list = new ArrayList <Dados>();
         // in.readObject(list);
         list = (ArrayList <Dados>) in.readObject();
-        for(Dados it: list)
-            System.out.println(it.hash_chunk);
+        for(Dados it: list){
+            System.out.println("Hash = "+it.hash_chunk);
+            System.out.println("Endereços:");
+            for(String ip: it.vetor_bd_chunk)
+                System.out.println(ip);
+        }
     }
 }
 
