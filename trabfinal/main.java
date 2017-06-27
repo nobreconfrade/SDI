@@ -129,6 +129,12 @@ class main{
             chunk.close();
         }
         out.close();
+        for(int i=0;i<meta.n_chunks;i++){
+            File filel = new File("chunks/"+meta.vetor_dados.get(i).hash_chunk+".chunk");
+            if (filel.delete()) {
+                System.out.println(filel.getName() + " foi deletada!");
+            }
+        }
     }
     public static void cliente(String arquivosdi) throws Exception {
         int serverPort = 3248;
