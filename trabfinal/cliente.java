@@ -28,8 +28,13 @@ class cliente {
               sentence += Character.toString((char)count);
             }
             String[] lines = sentence.split(System.getProperty("line.separator"));
-
-            for(int i=0;i<meta.n_chunks;i++){
+            int enviados = 0;
+            for(int i=0; i<lines.length && enviados<meta.n_chunks;i++){
+                InetAddress teste = InetAddress.getByName(lines[i%lines.length]);
+                if(!teste.isReachable(1000)){
+                  System.out.println("Conexão falhou");
+                  continue;
+                }
                 Socket server = new Socket (lines[i%lines.length],serverPort);
                 DataOutputStream paraservidor = new DataOutputStream(server.getOutputStream());
                 paraservidor.writeBytes("send");
@@ -47,7 +52,13 @@ class cliente {
                 bufferservidor.flush();
                 bufferservidor.close();
                 server.close();
+                meta.vetor_dados.get(enviados).vetor_bd_chunk.add(lines[i%lines.length]);
+                enviados++;
             }
+            if(enviados != meta.n_chunks)
+              System.out.println("Envio falhou");
+            else
+              System.out.println("Sucesso");
             return;
       }catch (FileNotFoundException e) {
         e.printStackTrace();
