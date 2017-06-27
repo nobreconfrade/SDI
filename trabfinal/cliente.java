@@ -30,13 +30,15 @@ class cliente {
             String[] lines = sentence.split(System.getProperty("line.separator"));
 
             for(int i=0;i<meta.n_chunks;i++){
-                Socket server = new Socket (lines[i%lines.length],serverPort);
+                // Socket server = new Socket (lines[i%lines.length],serverPort);
+                Socket server = new Socket ("localhost",serverPort);
                 DataOutputStream paraservidor = new DataOutputStream(server.getOutputStream());
-                paraservidor.writeBytes("send");
+                paraservidor.writeBytes("send_"+meta.vetor_dados.get(i).hash_chunk);
+                System.out.println("send_"+meta.vetor_dados.get(i).hash_chunk);
                 paraservidor.flush();
-                paraservidor.close();
-                server.close();
-                server = new Socket (lines[i%lines.length],serverPort);
+                // paraservidor.close();
+                // server.close();
+                // server = new Socket (lines[i%lines.length],serverPort);
                 BufferedOutputStream bufferservidor = new BufferedOutputStream(server.getOutputStream());
                 File meuchunk = new File("chunks/"+meta.vetor_dados.get(i).hash_chunk+".chunk");
                 byte[] mybytearray = new byte[(int) meuchunk.length()];
