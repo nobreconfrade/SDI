@@ -10,5 +10,8 @@ sep1:
 main:
 	javac main.java
 
+cliser:
+	javac cliente.java servidor.java
+
 clean:
-	rm *.class chunks/* *.jpg *.jpg.sdi 
+	rm *.class chunks/* *.jpg *.jpg.sdi
