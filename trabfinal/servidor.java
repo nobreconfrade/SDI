@@ -38,8 +38,18 @@ private final static int serverPort = 3248;
             bos.close();
             cliente.close();
           }else{
-            System.out.println("quase la! "+msg);
-
+            msg[1] = msg[1].replaceAll("(\\d+).*", "$1");
+            // System.out.println("quase la! "+msg[1]);
+            BufferedOutputStream buffercliente = new BufferedOutputStream(cliente.getOutputStream());
+            File meuchunk = new File("chunkspassed/"+msg[1]+".chunk");
+            byte[] mybytearray = new byte[(int) meuchunk.length()];
+            FileInputStream fis = new FileInputStream(meuchunk);
+            BufferedInputStream bis = new BufferedInputStream(fis);
+            bis.read(mybytearray, 0, mybytearray.length);
+            buffercliente.write(mybytearray, 0, mybytearray.length);
+            buffercliente.flush();
+            buffercliente.close();
+            cliente.close();
           }
           System.out.println("Cliente conectado: " + cliente.getInetAddress().getHostAddress());
           // ObjectOutputStream saida = new ObjectOutputStream(cliente.getOutputStream());
