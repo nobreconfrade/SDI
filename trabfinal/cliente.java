@@ -121,6 +121,7 @@ class cliente {
         DataOutputStream paraservidor = new DataOutputStream(server.getOutputStream());
         paraservidor.writeBytes("_"+String.valueOf(meta.vetor_dados.get(i%lines.length).hash_chunk));
         paraservidor.flush();
+        is = server.getInputStream();
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         FileOutputStream fos = new FileOutputStream("chunks/"+String.valueOf(meta.vetor_dados.get(i%lines.length).hash_chunk)+".chunk");
         BufferedOutputStream bos = new BufferedOutputStream(fos);

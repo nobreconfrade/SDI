@@ -263,7 +263,7 @@ class main{
             System.out.println("Erro: " + e.getMessage());
         }
     }
-    
+
     public static void main(String args[]) throws Exception {
         System.out.println("Selecione a operação:");
         System.out.println("1 - Separação [arquivo.jpg]");
@@ -289,7 +289,7 @@ class main{
 
         if (option == 1) {
             String arquivosdi = separacao(arquivo);
-            cliente(arquivosdi);
+            // cliente(arquivosdi);
         }
         else if (option == 2){
             reconstrucao(arquivo);

@@ -16,8 +16,8 @@ private final static int serverPort = 3248;
           BufferedReader docliente = new BufferedReader( new InputStreamReader(cliente.getInputStream()));
           String mensage = docliente.readLine();
           String msg[] = mensage.split("_");
+          msg[1] = msg[1].replaceAll("(\\d+).*", "$1");
           if(msg[0].equals("send")){
-            msg[1] = msg[1].replaceAll("(\\d+).*", "$1");
             // try {
               // cliente = servidor.accept();
               is = cliente.getInputStream();
@@ -38,7 +38,6 @@ private final static int serverPort = 3248;
             bos.close();
             cliente.close();
           }else{
-            msg[1] = msg[1].replaceAll("(\\d+).*", "$1");
             // System.out.println("quase la! "+msg[1]);
             BufferedOutputStream buffercliente = new BufferedOutputStream(cliente.getOutputStream());
             File meuchunk = new File("chunkspassed/"+msg[1]+".chunk");
