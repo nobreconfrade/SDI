@@ -43,7 +43,7 @@ class cliente {
                 server.close();
                 server = new Socket (lines[i%lines.length],serverPort);
                 BufferedOutputStream bufferservidor = new BufferedOutputStream(server.getOutputStream());
-                File meuchunk = new File("chunks/"+meta.vetor_dados.get(i).hash_chunk+".chunk");
+                File meuchunk = new File("chunks/"+meta.vetor_dados.get(enviados).hash_chunk+".chunk");
                 byte[] mybytearray = new byte[(int) meuchunk.length()];
                 FileInputStream fis = new FileInputStream(meuchunk);
                 BufferedInputStream bis = new BufferedInputStream(fis);
@@ -53,12 +53,14 @@ class cliente {
                 bufferservidor.close();
                 server.close();
                 meta.vetor_dados.get(enviados).vetor_bd_chunk.add(lines[i%lines.length]);
+                System.out.println(meta.vetor_dados.get(enviados).vetor_bd_chunk.get(0));
                 enviados++;
             }
             if(enviados != meta.n_chunks)
               System.out.println("Envio falhou");
             else
               System.out.println("Sucesso");
+            // meta.debug();
             return;
       }catch (FileNotFoundException e) {
         e.printStackTrace();
